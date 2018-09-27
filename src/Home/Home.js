@@ -1,35 +1,20 @@
 import React, { Component } from 'react';
-
+import AddIcon from '@material-ui/icons/Add'
+import Button from '@material-ui/core/Button'
 class Home extends Component {
-  login() {
-    this.props.auth.login();
-  }
   render() {
     const { isAuthenticated } = this.props.auth;
+   
     return (
-      <div className="container">
-        {
-          isAuthenticated() && (
-              <h4>
-                You are logged in!
-              </h4>
-            )
-        }
-        {
-          !isAuthenticated() && (
-              <h4>
-                You are not logged in! Please{' '}
-                <a
-                  style={{ cursor: 'pointer' }}
-                  onClick={this.login.bind(this)}
-                >
-                  Log In
-                </a>
-                {' '}to continue.
-              </h4>
-            )
-        }
-      </div>
+      
+    isAuthenticated() && (
+      <Button style={{
+        position: 'fixed',
+        right: 20,
+        bottom: 20
+      }} variant="fab" color="primary" aria-label="Add" >
+        <AddIcon />
+      </Button>)
     );
   }
 }
