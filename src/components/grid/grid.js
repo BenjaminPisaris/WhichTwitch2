@@ -5,6 +5,7 @@ const ResponsiveReactGridLayout = WidthProvider(Responsive);
 const originalLayouts = getFromLS("layouts") || {};
 import ExampleLayout from '../texthook';
 import Card from '@material-ui/core/Card'
+import _ from "lodash";
 /**
  * This layout demonstrates how to sync multiple responsive layouts to localstorage.
  */
@@ -14,7 +15,8 @@ class ResponsiveLocalStorageLayout extends React.PureComponent {
 
     this.state = {
       layouts: JSON.parse(JSON.stringify(originalLayouts))
-    };
+    }; 
+    
   }
 
   static get defaultProps() {
@@ -24,7 +26,11 @@ class ResponsiveLocalStorageLayout extends React.PureComponent {
       rowHeight: 120
     };
   }
+ 
+ 
 
+  // We're using the cols coming back from this to calculate where to add new items.
+  
   resetLayout() {
     this.setState({ layouts: {} });
   }
@@ -44,27 +50,27 @@ class ResponsiveLocalStorageLayout extends React.PureComponent {
           rowHeight={140}
           draggableHandle="moveMe"
           layouts={this.state.layouts}
-          onLayoutChange={(layout, layouts) =>
-            this.onLayoutChange(layout, layouts)
-          }
+          onLayoutChange={(layout) => this.onLayoutChange(layout)}
+          
         >
-          <div key="1" data-grid={{ w: 2, h: 3, x: 0, y: 0, minW: 2, minH: 3, draggableHandle: 'moveMe' }}>
+          
+          <div key="1" data-grid={{ w: 2, h: 3, x: 0, y: 0, minW: 2, minH: 3 }}>
             <Card style={{ width: '100%' }}>
               <div className="moveMe">Drag here</div><Widget />
             </Card>
           </div>
           <div key="2" data-grid={{ w: 2, h: 3, x: 2, y: 0, minW: 2, minH: 3 }}>
-          <Card style={{ width: '100%' }}>
+            <Card style={{ width: '100%' }}>
               <div className="moveMe">Drag here</div><Widget />
             </Card>
           </div>
           <div key="3" data-grid={{ w: 2, h: 3, x: 0, y: 6, minW: 2, minH: 3 }}>
-          <Card style={{ width: '100%' }}>
+            <Card style={{ width: '100%' }}>
               <div className="moveMe">Drag here</div><Widget />
             </Card>
           </div>
           <div key="4" data-grid={{ w: 2, h: 3, x: 2, y: 6, minW: 2, minH: 3 }}>
-          <Card style={{ width: '100%' }}>
+            <Card style={{ width: '100%' }}>
               <div className="moveMe">Drag here</div><Widget />
             </Card>
           </div>
