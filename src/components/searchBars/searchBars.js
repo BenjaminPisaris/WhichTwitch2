@@ -37,14 +37,12 @@ class InputFoo extends React.Component {
           <form onSubmit={this.submitHandler}>
             <Input type="text" 
                    id="theInput" 
-                   fullWidth="true"
+                   fullWidth={true}
                    placeholder="Enter username here"
                    value={this.state.channel} 
                    onChange={this.handleChange} />
                    <br/>
                    <br/>
-                 
-                  
             <Button variant="outlined" color="primary"  type="submit" >Load Stream</Button>
           </form>
 

@@ -19,7 +19,7 @@ class Widget extends React.Component {
     render() {
         if (this.state.fromChild != null) {
             return (
-               <div>
+               <div style={{padding: 10, overflow: 'scroll'}}>
                 <ReactTwitchEmbedVideo width='100%' layout="video" channel={this.state.fromChild}/>
                 </div>
             );

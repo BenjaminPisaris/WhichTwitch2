@@ -15,7 +15,6 @@ class Callback extends Component {
       right: 0,
       backgroundColor: 'white',
     }
-
     return (
       <div style={style}>
         <img src={loading} alt="loading"/>

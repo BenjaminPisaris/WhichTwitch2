@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, Button } from 'react-bootstrap';
 import './App.css';
-import Grid from './components/grid';
+import  Grid from './components/grid';
 
 class App extends Component {
   goTo(route) {
@@ -35,7 +35,7 @@ class App extends Component {
             </Button>
             {
               !isAuthenticated() && (
-                  <Button
+                  <span><Button
                     id="qsLoginBtn"
                     bsStyle="primary"
                     className="btn-margin"
@@ -43,11 +43,12 @@ class App extends Component {
                   >
                     Log In
                   </Button>
+                  </span>
                 )
             }
             {
               isAuthenticated() && (
-                  <Button
+                  <span><Button
                     id="qsLogoutBtn"
                     bsStyle="primary"
                     className="btn-margin"
@@ -55,6 +56,7 @@ class App extends Component {
                   >
                     Log Out
                   </Button>
+                  <Button>Add Stream</Button></span>
                 )
             }
             {
@@ -67,14 +69,8 @@ class App extends Component {
         {
           !isAuthenticated() && (
               <h4>
-                You are not logged in! Please{' '}
-                <a
-                  style={{ cursor: 'pointer' }}
-                  onClick={this.login.bind(this)}
-                >
-                  Log In
-                </a>
-                {' '}to continue.
+                You are not logged in! 
+                
               </h4>
             )
         }
