@@ -5,9 +5,7 @@ const originalLayouts = getFromLS("layouts") || {};
 import Card from '@material-ui/core/Card'
 import _ from "lodash";
 import Widget from '../widget'
-import MenuItem from '@material-ui/core/MenuItem';
-import TextField from '@material-ui/core/TextField';
-
+import Draggable from "react-draggable";
 
 
 /**
@@ -62,12 +60,6 @@ class ResponsiveLocalStorageLayout extends React.PureComponent {
 
 
   createElement(el) {
-    const removeStyle = {
-      position: "absolute",
-      right: "2px",
-      top: 0,
-      cursor: "pointer"
-    };
     const i = el.add ? "+" : el.i;
     return (
       <div key={i} data-grid={el}>
@@ -88,7 +80,8 @@ class ResponsiveLocalStorageLayout extends React.PureComponent {
         x: ((this.state.items.length * 6) + 12 ) % (this.state.cols || 12),
         y: Infinity, // puts it at the bottom
         w: 6,
-        h: 3
+        h: 3,
+        draggableHandle: "moveHere"
       }),
       // Increment the counter to ensure key is always unique.
       newCounter: this.state.newCounter + 1
@@ -114,12 +107,10 @@ class ResponsiveLocalStorageLayout extends React.PureComponent {
           className="layout"
           cols={{ lg: 12, md: 12, sm: 6, xs: 6, xxs: 6 }}
           rowHeight={160}
-         
-
+          draggableHandle="thesewontmove"
           layouts={this.state.layouts}
           onLayoutChange={(layout, layouts) =>
-            this.onLayoutChange(layout, layouts)}
-        >
+            this.onLayoutChange(layout, layouts)}>
           <div key="1" data-grid={{ w: 6, h: 3, x: 0, y: 0, minW: 2, minH: 3 }}>
             <Card style={{ width: '100%' }}>
             <Widget/>

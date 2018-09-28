@@ -49,7 +49,7 @@ class InputFoo extends React.Component {
                     <br/>
                     <br/>
                     <br/>
-                    /*  TODO: Connect with MongoDB to receive recently selected streamers, the ones below are hard coded /*
+                    <p style={{color: '#d3d3d3'}}>/*  TODO: Connect with MongoDB to receive recently selected streamers, the ones below are hard coded /*</p>
 
                     
             <br/>

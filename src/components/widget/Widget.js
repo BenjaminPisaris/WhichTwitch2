@@ -3,7 +3,6 @@ import InputFoo from '../searchBars';
 import ReactTwitchEmbedVideo from 'react-twitch-embed-video'
 /*import API from '../../utils/API';*/
 import axios from 'axios';
-import Button from '@material-ui/core'
 require('dotenv').config()
 
 
@@ -18,6 +17,10 @@ class Widget extends React.Component {
         fromChild: undefined
       };
     }
+    goTo(route) {
+      this.props.history.replace(`/${route}`)
+    }
+  
     componentDidMount() {
       axios.get(`https://api.twitch.tv/kraken/streams/featured?client_id=j8oznmn9dd181bi7n26529ytjx1kwd&?limit=15`)
       .then(function(response, error) {
@@ -29,9 +32,7 @@ class Widget extends React.Component {
           channelList.push(returnedList[i].stream.channel.name)
         }
        console.log(`channel List: ${channelList}`)
-        this.setState({
-          channels: channelList
-        })
+        
         
       })
     }
@@ -67,8 +68,7 @@ class Widget extends React.Component {
       return (
         <div>
           <InputFoo  handlerFromParent={this.handleData} /> 
-         
-          
+         <button onClick={this.handleData} value="ninja">Ninja</button><button value="shroud" onClick={this.handleData}>shroud</button><button value="timthetatman" onClick={this.handleData}>Timethetatman</button><button onClick={this.handleData} value="professornoxlive">professornoxlive</button>
         </div>
       );
     }
