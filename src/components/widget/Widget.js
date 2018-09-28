@@ -3,7 +3,6 @@ import InputFoo from '../searchBars';
 import ReactTwitchEmbedVideo from 'react-twitch-embed-video'
 /*import API from '../../utils/API';*/
 import axios from 'axios';
-require('dotenv').config()
 
 
 class Widget extends React.Component {
@@ -24,7 +23,6 @@ class Widget extends React.Component {
     componentDidMount() {
       axios.get(`https://api.twitch.tv/kraken/streams/featured?client_id=j8oznmn9dd181bi7n26529ytjx1kwd&?limit=15`)
       .then(function(response, error) {
-        
         const returnedList = response.data.featured
         console.log(`returned list: ${returnedList}` )
         var channelList = []
@@ -44,10 +42,12 @@ class Widget extends React.Component {
      
       .then(res => this.setState({channels: res.data}))
     }*/
-    handleData(data) {
+    handleData(value) {
       this.setState({
-        fromChild: data
-      });
+        fromChild: value
+      })
+      console.log(`STATE :${this.state.fromChild}`);
+      
 /*      TODO: Fix Mongoose so it actually communicates with the server
         API.saveChannel({
           channel: this.state.fromChild
@@ -68,7 +68,7 @@ class Widget extends React.Component {
       return (
         <div>
           <InputFoo  handlerFromParent={this.handleData} /> 
-         <button onClick={this.handleData} value="ninja">Ninja</button><button value="shroud" onClick={this.handleData}>shroud</button><button value="timthetatman" onClick={this.handleData}>Timethetatman</button><button onClick={this.handleData} value="professornoxlive">professornoxlive</button>
+         <button onClick={this.handleData}  value="ninja">Ninja</button><button value="shroud" onClick={this.handleData}>shroud</button><button value="timthetatman" onClick={this.handleData}>Timethetatman</button><button onClick={this.handleData} value="professornoxlive">professornoxlive</button>
         </div>
       );
     }
