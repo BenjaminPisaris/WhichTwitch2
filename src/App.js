@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Navbar, Button } from 'react-bootstrap';
 import './App.css';
 import  Grid from './components/grid';
+import {resetLayout} from './components/grid'
 
 class App extends Component {
   goTo(route) {
@@ -24,17 +25,9 @@ class App extends Component {
         <Navbar fluid>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#">Auth0 - React</a>
+              <a href="#">WhichTwitch</a>
             </Navbar.Brand>
-            <Button
-              bsStyle="primary"
-              className="btn-margin"
-              onClick={this.goTo.bind(this, 'home')}
-            >
-              Home
-            </Button>
-            {
-              !isAuthenticated() && (
+            {!isAuthenticated() && (
                   <span><Button
                     id="qsLoginBtn"
                     bsStyle="primary"
@@ -44,10 +37,8 @@ class App extends Component {
                     Log In
                   </Button>
                   </span>
-                )
-            }
-            {
-              isAuthenticated() && (
+                )}
+            {isAuthenticated() && (
                   <span><Button
                     id="qsLogoutBtn"
                     bsStyle="primary"
@@ -56,24 +47,9 @@ class App extends Component {
                   >
                     Log Out
                   </Button>
-                  <Button>Add Stream</Button></span>
+                  <Button onClick={resetLayout}>Reset</Button></span>
                 )
             }
-            {
-          isAuthenticated() && (
-              <h4>
-                You are logged in!
-              </h4>
-            )
-        }
-        {
-          !isAuthenticated() && (
-              <h4>
-                You are not logged in! 
-                
-              </h4>
-            )
-        }
           </Navbar.Header>
         </Navbar>
         <Grid/>

@@ -1,6 +1,8 @@
 import React from 'react';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
+import API from "../../utils/API";
+
 
 
 class InputFoo extends React.Component {
@@ -9,16 +11,16 @@ class InputFoo extends React.Component {
       this.handleChange = this.handleChange.bind(this);
       this.submitHandler = this.submitHandler.bind(this);
       this.state = {
-        channel: ''
+        channel: null
       };
     }
+   
     
     submitHandler(evt) {
       evt.preventDefault();
       // pass the input field value to the event handler passed
       // as a prop by the parent (App)
       this.props.handlerFromParent(this.state.channel);
-      
       this.setState({
         channel: ''
       });
@@ -40,10 +42,14 @@ class InputFoo extends React.Component {
                    fullWidth={true}
                    placeholder="Enter username here"
                    value={this.state.channel} 
-                   onChange={this.handleChange} />
+                   onChange={this.handleChange}
+                    />
                    <br/>
                    <br/>
-            <Button variant="outlined" color="primary"  type="submit" >Load Stream</Button>
+            <Button variant="outlined" color="primary">Load Stream</Button>
+            <br/>
+            <br/>
+            
           </form>
 
         </div>
