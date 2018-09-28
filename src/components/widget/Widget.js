@@ -3,6 +3,7 @@ import InputFoo from '../searchBars';
 import ReactTwitchEmbedVideo from 'react-twitch-embed-video'
 /*import API from '../../utils/API';*/
 import axios from 'axios';
+import Button from '@material-ui/core'
 require('dotenv').config()
 
 
@@ -10,15 +11,28 @@ class Widget extends React.Component {
     constructor() {
       super();
       this.handleData = this.handleData.bind(this);
+      this.componentDidMount = this.componentDidMount.bind(this)
       this.state = {
-        channels: [],
+
+        channels: [] ,
         fromChild: undefined
       };
     }
     componentDidMount() {
-      axios.get(`https://api.twitch.tv/kraken/streams/featured?client_id=${process.env.TWITCH_CLIENT_ID}`)
+      axios.get(`https://api.twitch.tv/kraken/streams/featured?client_id=j8oznmn9dd181bi7n26529ytjx1kwd&?limit=15`)
       .then(function(response, error) {
-        console.log(response, error)
+        
+        const returnedList = response.data.featured
+        console.log(`returned list: ${returnedList}` )
+        var channelList = []
+        for (var i = 0; i < returnedList.length; i++) {
+          channelList.push(returnedList[i].stream.channel.name)
+        }
+       console.log(`channel List: ${channelList}`)
+        this.setState({
+          channels: channelList
+        })
+        
       })
     }
    /* componentDidMount() {
@@ -53,6 +67,8 @@ class Widget extends React.Component {
       return (
         <div>
           <InputFoo  handlerFromParent={this.handleData} /> 
+         
+          
         </div>
       );
     }
