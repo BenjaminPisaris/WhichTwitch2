@@ -5,7 +5,6 @@ const originalLayouts = getFromLS("layouts") || {};
 import Card from '@material-ui/core/Card'
 import _ from "lodash";
 import Widget from '../widget'
-import Draggable from "react-draggable";
 
 
 /**
@@ -63,6 +62,7 @@ class ResponsiveLocalStorageLayout extends React.PureComponent {
     const i = el.add ? "+" : el.i;
     return (
       <div key={i} data-grid={el}>
+      {i}
         <Card style={{ width: '100%' }}>
             <Widget />
             </Card>
@@ -106,17 +106,19 @@ class ResponsiveLocalStorageLayout extends React.PureComponent {
         <ResponsiveReactGridLayout
           className="layout"
           cols={{ lg: 12, md: 12, sm: 6, xs: 6, xxs: 6 }}
+          /*draggableHandle="theseWontMove"*/
           rowHeight={160}
-          draggableHandle="thesewontmove"
           layouts={this.state.layouts}
           onLayoutChange={(layout, layouts) =>
             this.onLayoutChange(layout, layouts)}>
           <div key="1" data-grid={{ w: 6, h: 3, x: 0, y: 0, minW: 2, minH: 3 }}>
+            1
             <Card style={{ width: '100%' }}>
             <Widget/>
             </Card>
           </div>
-          <div key="2" data-grid={{ w: 6, h: 3, x: 7, y: 0, minW: 2, minH: 3 }}>
+          <div className="theseWontMove" key="2" data-grid={{ w: 6, h: 3, x: 7, y: 0, minW: 2, minH: 3 }}>
+          2
             <Card style={{ width: '100%' }}>
             <Widget />
             </Card>
