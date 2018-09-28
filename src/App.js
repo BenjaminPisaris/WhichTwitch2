@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Navbar, Button } from 'react-bootstrap';
 import './App.css';
 import  Grid from './components/grid';
-import {resetLayout} from './components/grid'
 
 class App extends Component {
   goTo(route) {
@@ -47,7 +46,7 @@ class App extends Component {
                   >
                     Log Out
                   </Button>
-                  <Button onClick={resetLayout}>Reset</Button></span>
+                  </span>
                 )
             }
           </Navbar.Header>

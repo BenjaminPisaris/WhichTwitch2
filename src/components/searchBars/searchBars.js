@@ -1,7 +1,6 @@
 import React from 'react';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
-import API from "../../utils/API";
 
 
 
@@ -11,7 +10,7 @@ class InputFoo extends React.Component {
       this.handleChange = this.handleChange.bind(this);
       this.submitHandler = this.submitHandler.bind(this);
       this.state = {
-        channel: null
+        channel: undefined
       };
     }
    
@@ -36,7 +35,7 @@ class InputFoo extends React.Component {
       
       return (
         <div >
-          <form onSubmit={this.submitHandler}>
+          <form style={{textAlign: 'center'}} onSubmit={this.submitHandler}>
             <Input type="text" 
                    id="theInput" 
                    fullWidth={true}
@@ -46,7 +45,13 @@ class InputFoo extends React.Component {
                     />
                    <br/>
                    <br/>
-            <Button variant="outlined" color="primary">Load Stream</Button>
+            <Button variant="outlined" style={{margin: 'auto'}} color="primary">Load Stream</Button>
+                    <br/>
+                    <br/>
+                    <br/>
+                    /*  TODO: Connect with MongoDB to receive recently selected streamers, the ones below are hard coded /*
+
+                    
             <br/>
             <br/>
             

@@ -4,7 +4,6 @@ const ResponsiveReactGridLayout = WidthProvider(Responsive);
 const originalLayouts = getFromLS("layouts") || {};
 import Card from '@material-ui/core/Card'
 import _ from "lodash";
-import {resetLayout, onLayoutChange} from './actions'
 import Widget from '../widget'
 /**
  * This layout demonstrates how to sync multiple responsive layouts to localstorage.
@@ -58,7 +57,7 @@ class ResponsiveLocalStorageLayout extends React.PureComponent {
           
           <div key="1" data-grid={{ w: 6, h: 3, x: 0, y: 0, minW: 2, minH: 3 }}>
             <Card style={{ width: '100%' }}>
-            <Widget />
+            <Widget/>
             </Card>
           </div>
           <div key="2" data-grid={{ w: 6, h: 3, x: 7, y: 0, minW: 2, minH: 3 }}>
